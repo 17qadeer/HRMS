@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Applications</title>
+<style>
+/* CSS for table styling */
+table {
+	border-collapse: collapse;
+	width: 50%; /* Adjust the width as needed */
+	margin: auto; /* Center the table horizontally */
+}
+
+th, td {
+	border: 1px solid black; /* Add borders to table cells */
+	padding: 8px; /* Add padding to table cells */
+	text-align: left; /* Align text to the left within cells */
+}
+
+th {
+	background-color: #f2f2f2; /* Add background color to table header */
+}
+</style>
+</head>
+<body
+	style="background-image: url('https://media.licdn.com/dms/image/D4E12AQHxMz2snmbQ-g/article-cover_image-shrink_720_1280/0/1676553933859?e=2147483647&amp;v=beta&amp;t=r-546OTxr1qwzfH8eXEHY6OI8y2RQK_YkH6XBgM4x4Y'); background-repeat: no-repeat; background-size: cover; backdrop-filter: blur(5px)">
+	<button onclick="window.history.back()" class="btn btn-primary"
+		style="border-radius: 20px">
+		<b style="font-size: 20px">Back</b>
+	</button>
+	<h1 style="text-align: center; background-color: white">Job
+		Applications</h1>
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align: center; background-color: white">Application
+					ID</th>
+				<th style="text-align: center; background-color: white">Employee
+					ID</th>
+				<th style="text-align: center; background-color: white">Job ID</th>
+				<th style="text-align: center; background-color: white">Status</th>
+				<th style="text-align: center; background-color: white">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- Iterate over the list of job applications -->
+			<tr th:each="app : ${List}">
+				<!-- Display each application's data -->
+				<td><b th:text="${app.applicationId}">Application ID</b></td>
+				<td><b th:text="${app.employeeId}">Employee ID</b></td>
+				<td><b th:text="${app.jobId}">Job ID</b></td>
+				<td><b th:text="${app.status}">Status</b></td>
+				<td style="text-align: center;"><button
+						style="border-radius: 20px">
+						<a
+							th:href="@{/Action/{applicationId}/{action}(applicationId=${app.applicationId},action='accept')}"
+							style="text-decoration: none;"><b
+							style="font-size: 18px; color: green">Accept</b></a>
+					</button>
+					<button style="border-radius: 20px">
+						<a
+							th:href="@{/Action/{applicationId}/{action}(applicationId=${app.applicationId},action='reject')}"
+							style="text-decoration: none;"><b
+							style="font-size: 18px; color: red">Reject</b></a></b>
+					</button></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Sheet Graph</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Employee Time Sheet Graph</h1>
+        <canvas id="timeSheetChart" width="800" height="400"></canvas>
+    </div>
+
+    <script th:inline="javascript">
+        var employeeStartAndEnd = /*[[${employeeStartAndEnd}]]*/ [];
+
+        var labels = [];
+        var durations = [];
+
+        employeeStartAndEnd.forEach(function(entry) {
+            labels.push(entry.employeeId);
+            durations.push(entry.duration);
+        });
+
+        var ctx = document.getElementById('timeSheetChart').getContext('2d');
+        var timeSheetChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Duration (in Seconds)',
+                    data: durations,
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

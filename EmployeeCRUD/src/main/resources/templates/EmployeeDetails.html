@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+ 
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+ 
+        .left-side {
+            width: 45%;
+        }
+ 
+        .right-side {
+            width: 45%;
+        }
+ 
+        .edit-link {
+            margin-bottom: 20px;
+        }
+ 
+        .edit-link a {
+            display: block;
+            margin-bottom: 10px;
+        }
+ 
+        .employee-detail {
+            background-color: #fff9f8;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+ 
+        .employee-detail p {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-side">
+            <div class="edit-link">
+                <a th:href="@{/getOrganisationChart}" class="btn btn-primary">Your Organization</a>
+                <a th:href="@{/edit/{id}(id=${emp.id})}" class="btn btn-primary">Update Details</a>
+                <a th:href="@{/resetPassword/{id}(id=${emp.id})}" class="btn btn-primary">Reset Password</a>
+                <a th:href="@{/JobsAvailable/{id}(id=${emp.id})}" class="btn btn-primary">Jobs Available</a>
+                <a th:href="@{/FetchEmployeeApplications/{id}(id=${emp.id})}" class="btn btn-primary">My Job Applications</a>
+                <a th:href="@{/applyLeaves/{id}(id=${emp.id})}" class="btn btn-primary">Leaves</a>
+                <a th:href="@{/getPolicies}" class="btn btn-primary">Company Policies</a>
+                <a th:href="@{/takeSurvey/{id}(id=${emp.id})}" class="btn btn-primary">Employee Survey</a>
+                <a th:href="@{/markTimeSheet/{id}(id=${emp.id})}" class="btn btn-primary">Time Sheet</a>
+               <a th:href="@{/getUpload/{id}(id=${emp.id})}" class="btn btn-primary">Upload Resume</a>
+             
+    
+                <a th:href="@{/home}" class="btn btn-primary">Logout</a>
+            </div>
+        </div>
+ 
+        <div class="right-side">
+            <h1>Employee Details</h1>
+            
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div th:if="${emp}" class="employee-detail">
+                        <p><strong>Employee ID:</strong> <span th:text="${emp.id}"></span></p>
+                        <p><strong>First Name:</strong> <span th:text="${emp.firstName}"></span></p>
+                        <p><strong>Last Name:</strong> <span th:text="${emp.lastName}"></span></p>
+                        <p><strong>Email:</strong> <span th:text="${emp.email}"></span></p>
+                        <p><strong>Role:</strong> <span th:text="${emp.role}"></span></p>
+                    </div>
+                    <div th:unless="${emp}">
+                        <p>No employee found with the provided first name.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+</body>
+</html>

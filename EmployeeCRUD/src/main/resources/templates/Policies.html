@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Policies</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            text-align: left;
+        }
+        h1 {
+            text-align: center; /* Center align the h1 element */
+            margin-bottom: 30px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Company Policies</h1>
+        <ul>
+            <li><strong>Work Hours:</strong> Our standard work hours are from 9:00 AM to 5:00 PM, Monday to Friday.</li>
+            <li><strong>Remote Work:</strong> We offer flexible remote work options for eligible employees. Please refer to the Remote Work Policy for details.</li>
+            <li><strong>Leave Policy:</strong> Employees are entitled to 15 days of annual leave per calendar year. Please refer to the Leave Policy for details.</li>
+            <li><strong>Dress Code:</strong> Our dress code is business casual. Please ensure that your attire is appropriate for the workplace.</li>
+            <li><strong>Code of Conduct:</strong> We expect all employees to adhere to our Code of Conduct at all times. Please familiarize yourself with the company's values and guidelines.</li>
+        </ul>
+        <p>For more information, please refer to the Employee Handbook.</p>
+        <!-- Back button -->
+        <button onclick="goBack()" class="btn btn-primary">Back</button>
+    </div>
+
+    <!-- JavaScript to go back in history -->
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Time Sheet</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .card-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .btn-check {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        .btn-check:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Time Sheet</h1>
+        
+ 
+  <div class="card">
+        <p class="card-title">Employee Name: <span th:text="${emp.firstName} + ' ' + ${emp.lastName}"></span></p>
+        <div th:each="record : ${checkInOutRecords}">
+            <p class="card-title">Check-In Time: <span th:text="${record.checkInTime}"></span></p>
+            <p class="card-title">Check-Out Time: <span th:text="${record.checkOutTime}"></span></p>
+        </div>
+    </div>
+        
+      <form action="/checkIn" method="post">
+    <input type="hidden" id="employeeId" name="employeeId" th:value="${emp.id}" />
+    <button type="submit" name="action" value="checkIn" class="btn btn-check">Check In</button>
+    <button type="submit" name="action" value="checkOut" class="btn btn-check">Check Out</button>
+</form>
+ <a th:href="@{/employee-details/{id}(id=${emp.id})}" class="btn btn-primary">Back</a>
+              
+ 
+    </div>
+</body>
+</html>

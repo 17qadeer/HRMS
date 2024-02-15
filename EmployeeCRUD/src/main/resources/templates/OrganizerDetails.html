@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizer Details</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .card-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .btn-edit {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0 5px;
+            width: 200px; /* Set a fixed width for all buttons */
+        }
+        .btn-edit:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="btn-container">
+            <a th:href="@{/editOrganizer/{id}(id=${org.id})}" class="btn btn-edit">EDIT DETAILS</a>
+            <a th:href="@{/getAllSurveys}" class="btn btn-edit">VIEW SURVEYS</a>
+            <a href="/surveyGraph" class="btn btn-primary">View Survey Graph</a>
+            <a th:href="@{/fetchApplications}" class="btn btn-edit">JOB APPLICATIONS</a>
+            <a th:href="@{/eachEmployeeDuration}" class="btn btn-edit"> Employee Durations</a>
+            <a th:href="@{/getGraphForTimeSheet}" class="btn btn-edit"> Employee Durations Graph</a>
+       		<a th:href="@{/pdfs}" class="btn btn-edit">DownloadEmployee Resumes</a>
+     
+       		<a th:href="@{/getOrganizer}" class="btn btn-edit">Logout</a>
+     
+        </div>
+        
+        <div class="card">
+            <h1>Organizer Details</h1>
+            
+            <div th:if="${org}">
+                <p class="card-title">ID: <span th:text="${org.id}"></span></p>
+                <p class="card-title">First Name: <span th:text="${org.firstName}"></span></p>
+                <p class="card-title">Last Name: <span th:text="${org.lastName}"></span></p>
+                <p class="card-title">Email: <span th:text="${org.email}"></span></p>
+                <p class="card-title">Role: <span th:text="${org.role}"></span></p>
+            </div>
+            
+            <div th:unless="${org}" class="alert alert-danger" role="alert">
+                No Organizer found with the provided first name.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

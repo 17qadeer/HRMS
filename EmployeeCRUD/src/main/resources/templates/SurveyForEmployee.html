@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Survey</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Employee Survey</h1>
+        
+         <p><strong>Employee Name:</strong> <span th:text="${emp.firstName} + ' ' + ${emp.lastName}"></span></p>
+                   
+       
+         <form action="#" th:action="@{/submitSurvey/{id}(id=${emp.id})}" method="post">
+           
+            <input type="hidden" name="employeeId" th:value="${emp.id}">
+            
+           
+           
+            
+            <div class="form-group">
+                <label for="workEnvironmentRating">Work Environment Rating:</label>
+                <div>
+                    <label class="radio-inline"><input type="radio" name="workEnvironmentRating" value="1" required="required"> 1</label>
+                    <label class="radio-inline"><input type="radio" name="workEnvironmentRating" value="2" required="required"> 2</label>
+                    <label class="radio-inline"><input type="radio" name="workEnvironmentRating" value="3" required="required"> 3</label>
+                    <label class="radio-inline"><input type="radio" name="workEnvironmentRating" value="4" required="required"> 4</label>
+                    <label class="radio-inline"><input type="radio" name="workEnvironmentRating" value="5" required="required"> 5</label>
+                </div>
+            </div>
+            
+            
+             <div class="form-group">
+                <label for="jobSatisfactionLevel">Job Satisfaction Level:</label>
+               
+                 <div>
+                    <label class="radio-inline"><input type="radio" name="jobSatisfactionLevel" value="1" required="required"> 1</label>
+                    <label class="radio-inline"><input type="radio" name="jobSatisfactionLevel" value="2" required="required"> 2</label>
+                    <label class="radio-inline"><input type="radio" name="jobSatisfactionLevel" value="3" required="required"> 3</label>
+                    <label class="radio-inline"><input type="radio" name="jobSatisfactionLevel" value="4" required="required"> 4</label>
+                    <label class="radio-inline"><input type="radio" name="jobSatisfactionLevel" value="5" required="required"> 5</label>
+                </div>
+           
+            </div>
+            
+            
+            <div class="form-group">
+                <label for="leadershipRating">Leadership Rating</label>
+               
+                 <div>
+                    <label class="radio-inline"><input type="radio" name="leadershipRating" value="1" required="required"> 1</label>
+                    <label class="radio-inline"><input type="radio" name="leadershipRating" value="2" required="required"> 2</label>
+                    <label class="radio-inline"><input type="radio" name="leadershipRating" value="3" required="required"> 3</label>
+                    <label class="radio-inline"><input type="radio" name="leadershipRating" value="4" required="required"> 4</label>
+                    <label class="radio-inline"><input type="radio" name="leadershipRating" value="5" required="required"> 5</label>
+                </div>
+  
+            </div>
+            
+            
+           
+            
+      
+            
+             <div class="form-group">
+                <label for="feedback">Feedback about current Quarter:</label>
+                <textarea id="feedback" name="feedback" class="form-control" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="improvementSuggestions">Improvement Suggestions:</label>
+                <textarea id="improvementSuggestions" name="improvementSuggestions" class="form-control"></textarea>
+            </div>
+            
+          
+            
+            <div class="form-group form-check">
+                <input type="checkbox" id="recommendToOthers" name="recommendToOthers" class="form-check-input">
+                <label class="form-check-label" for="recommendToOthers">Would you recommend the organization to others?</label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

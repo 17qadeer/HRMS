@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Survey List</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-4">Survey List</h1>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Employee ID</th>
+                    <th>Work Environment Rating</th>
+                    <th>Job Satisfaction Level</th>
+                    <th>Leadership Rating</th>
+                    <th>Feedback</th>
+                    <th>Improvement Suggestions</th>
+                    <th>Recommend To Others</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="survey : ${surveys}">
+                    <td th:text="${survey.id}"></td>
+                    <td th:text="${survey.employeeId}"></td>
+                    <td th:text="${survey.workEnvironmentRating}"></td>
+                    <td th:text="${survey.jobSatisfactionLevel}"></td>
+                    <td th:text="${survey.leadershipRating}"></td>
+                    <td th:text="${survey.feedback}"></td>
+                    <td th:text="${survey.improvementSuggestions}"></td>
+                    <td th:text="${survey.recommendToOthers}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="window.history.back()" class="btn btn-primary">Back</button>
+    
+         </div>
+
+    <!-- Include Bootstrap JS (optional, for certain components) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

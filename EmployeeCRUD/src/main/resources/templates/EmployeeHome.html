@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+            display: flex; /* Enable flexbox */
+            justify-content: center; /* Horizontal centering */
+            align-items: center; /* Vertical centering */
+            height: 90vh; /* Full height of the viewport */
+        }
+        .container {
+            max-width: 600px;
+            text-align: center; /* Center the text within the container */
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        a {
+            color: #007bff;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Employee Management System</h1>
+        
+        <!-- Hyperlink to the login page -->
+        <p><a href="/login" class="btn btn-primary">Login</a></p>
+        
+        <!-- Hyperlink to the employee registration page -->
+        <p><a href="/employee" class="btn btn-success">Register Employee</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Job Applications</title>
+    <style>
+        /* CSS for table styling */
+        table {
+            border-collapse: collapse;
+            width: 50%; /* Adjust the width as needed */
+            margin: auto; /* Center the table horizontally */
+        }
+ 
+        th, td {
+            border: 1px solid black; /* Add borders to table cells */
+            padding: 8px; /* Add padding to table cells */
+            text-align: left; /* Align text to the left within cells */
+        }
+ 
+        th {
+            background-color: #f2f2f2; /* Add background color to table header */
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;"> My Job Applications</h1>
+    <table>
+        <thead>
+            <tr>
+                <th style="text-align: center;">Application ID</th>
+                <th style="text-align: center;">Employee ID</th>
+                <th style="text-align: center;">Job ID</th>
+                <th style="text-align: center;">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iterate over the list of job applications -->
+            <tr th:each="app : ${List}">
+                <!-- Display each application's data -->
+                <td th:text="${app.applicationId}">Application ID</td>
+                <td th:text="${app.employeeId}">Employee ID</td>
+                <td th:text="${app.jobId}">Job ID</td>
+                <td th:text="${app.status}">Status</td>
+               </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leave Manager</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+/* Custom CSS to center align container */
+.center-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+body {
+	padding: 20px;
+}
+</style>
+
+</head>
+<body>
+	<div class="container center-container">
+		<div class="w-75">
+			<h1 class="text-center mb-4">Leave Manager</h1>
+			<div class="mb-4" th:if="${emp}">
+				<p>
+					<strong>Employee ID:</strong> <span th:text="${emp.id}"></span>
+				</p>
+				<p>
+					<strong>Name:</strong> <span
+						th:text="${emp.firstName + ' ' + emp.lastName}"></span>
+				</p>
+				<p>
+					<strong>Available Leaves:</strong> <span th:text="${leaves}"></span>
+				</p>
+			</div>
+			<div th:unless="${emp}">
+				<p>No employee found.</p>
+			</div>
+			<hr>
+			<h2 class="text-center mb-4">Apply for Leave</h2>
+			<form th:action="@{/applyLeaves/{id}(id=${emp.id})}" method="post">
+				<div class="form-group">
+					<label for="startDate">Start Date:</label> <input type="date"
+						id="startDate" name="startDate" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="endDate">End Date:</label> <input type="date"
+						id="endDate" name="endDate" class="form-control" required>
+				</div>
+				<button type="submit" class="btn btn-primary btn-block">Apply</button>
+			</form>
+			<br>
+			<button onclick="goBack()" class="btn btn-primary btn-block">Back</button>
+		</div>
+	</div>
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+	<!-- Bootstrap JS and dependencies -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
